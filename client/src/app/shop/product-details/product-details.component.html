@@ -34,6 +34,8 @@
         >
           Add to Cart
         </button>
+        <a [routerLink]="['/shop', product.id - 1]">Prev</a>
+        <a [routerLink]="['/shop', product.id + 1]">Next</a>
       </div>
     </div>
     <div class="row mt-5">

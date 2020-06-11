@@ -42,9 +42,8 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   loadProduct() {
-    this.shopService
-      .getProduct(+this.activatedRoute.snapshot.paramMap.get('id'))
-      .subscribe(
+    this.activatedRoute.paramMap.subscribe((params) => {
+      this.shopService.getProduct(+params.get('id')).subscribe(
         (product) => {
           this.product = product;
           this.bcService.set('@productDetails', product.name);
@@ -53,5 +52,6 @@ export class ProductDetailsComponent implements OnInit {
           console.log(error);
         }
       );
+    });
   }
 }
